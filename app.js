@@ -322,7 +322,7 @@ const RUNES = [
     }
   },
   {
-    glyph: "ᛊ",
+    glyph: "ᛋ",
     name: "Sowilo",
     zh: {
       ancient: "太陽、勝利、生命的中心火。",
