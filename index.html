@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rune Blessing</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand__title">Rune Blessing</div>
+        <div class="brand__sub" id="brandSub"></div>
+      </div>
+
+      <div class="topbar__actions">
+        <button class="btn ghost" id="langBtn" aria-label="Toggle language">繁 / EN</button>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <!-- Step 1: Meditation -->
+      <section class="card" id="stepMeditation">
+        <h1 class="h1" id="t_meditationTitle"></h1>
+        <p class="p" id="t_meditationLead"></p>
+
+        <div class="timerRow">
+          <button class="btn" id="startMeditationBtn"></button>
+          <div class="timer" aria-live="polite">
+            <span id="timerText">01:00</span>
+            <span class="timerDot" id="timerDot"></span>
+          </div>
+        </div>
+
+        <div class="meditationText" id="meditationScript" hidden></div>
+
+        <div class="actions">
+          <button class="btn primary" id="toWheelBtn" disabled></button>
+        </div>
+
+        <div class="note" id="t_meditationNote"></div>
+      </section>
+
+      <!-- Step 2: Wheel -->
+      <section class="card" id="stepWheel" hidden>
+        <div class="wheelHead">
+          <h2 class="h2" id="t_wheelTitle"></h2>
+          <p class="p subtle" id="t_wheelSubtitle"></p>
+        </div>
+
+        <div class="wheelStage">
+          <div class="parchmentGlow"></div>
+
+          <div class="wheelWrap">
+            <div class="pointer" aria-hidden="true"></div>
+            <button class="wheel" id="wheelBtn" aria-label="Spin the rune wheel">
+              <div class="wheel__ring"></div>
+              <div class="wheel__center">
+                <div class="wheel__centerText" id="t_wheelCenter"></div>
+              </div>
+              <div class="wheel__runes" id="wheelRunes"></div>
+            </button>
+          </div>
+
+          <div class="actions">
+            <button class="btn primary" id="drawBtn"></button>
+            <button class="btn ghost" id="redrawInfoBtn"></button>
+          </div>
+
+          <div class="note" id="t_wheelNote"></div>
+        </div>
+      </section>
+
+      <!-- Step 3: Result -->
+      <section class="card" id="stepResult" hidden>
+        <div class="resultHead">
+          <h2 class="h2" id="t_resultTitle"></h2>
+          <div class="resultMeta">
+            <span class="pill" id="todayPill"></span>
+            <span class="pill" id="fixedPill"></span>
+          </div>
+        </div>
+
+        <div class="resultGrid">
+          <article class="resultCard">
+            <div class="resultCard__label" id="t_mainBlessing"></div>
+            <div class="runeRow">
+              <div class="runeGlyph" id="rune1Glyph"></div>
+              <div class="runeName" id="rune1Name"></div>
+            </div>
+            <div class="tabs">
+              <button class="tab active" data-tab="ancient" data-target="r1"></button>
+              <button class="tab" data-tab="modern" data-target="r1"></button>
+              <button class="tab" data-tab="question" data-target="r1"></button>
+              <button class="tab" data-tab="blessing" data-target="r1"></button>
+            </div>
+            <div class="tabPanel" id="r1Panel"></div>
+          </article>
+
+          <article class="resultCard" id="rune2Card" hidden>
+            <div class="resultCard__label" id="t_hiddenSupport"></div>
+            <div class="runeRow">
+              <div class="runeGlyph" id="rune2Glyph"></div>
+              <div class="runeName" id="rune2Name"></div>
+            </div>
+            <div class="tabs">
+              <button class="tab active" data-tab="ancient" data-target="r2"></button>
+              <button class="tab" data-tab="modern" data-target="r2"></button>
+              <button class="tab" data-tab="question" data-target="r2"></button>
+              <button class="tab" data-tab="blessing" data-target="r2"></button>
+            </div>
+            <div class="tabPanel" id="r2Panel"></div>
+          </article>
+        </div>
+
+        <div class="actions">
+          <button class="btn" id="backToWheelBtn"></button>
+        </div>
+
+        <div class="tiny" id="t_seedHint"></div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="tiny">© <span id="year"></span> Rune Blessing</div>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
