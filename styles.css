@@ -1,0 +1,308 @@
+:root{
+  --bg:#0b0a08;
+  --ink:#f5f0e6;
+  --muted:#c9c1b3;
+  --paper:#2a241b;
+  --paper2:#221d16;
+  --gold:#d8c08a;
+  --accent:#bba16b;
+  --shadow: rgba(0,0,0,.55);
+  --ring: rgba(216,192,138,.35);
+  --stroke: rgba(245,240,230,.10);
+  --stroke2: rgba(245,240,230,.16);
+  --radius: 22px;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: ui-sans-serif, system-ui, -apple-system, "PingFang TC","Noto Sans TC","Microsoft JhengHei", Arial, sans-serif;
+  color:var(--ink);
+  background:
+    radial-gradient(1200px 800px at 20% 10%, rgba(216,192,138,.12), transparent 55%),
+    radial-gradient(1000px 700px at 80% 20%, rgba(187,161,107,.08), transparent 55%),
+    radial-gradient(900px 700px at 50% 90%, rgba(245,240,230,.06), transparent 55%),
+    linear-gradient(180deg, #070605, #0d0b08 40%, #0a0907);
+}
+
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px 22px;
+  position:sticky; top:0;
+  backdrop-filter: blur(10px);
+  background: linear-gradient(180deg, rgba(11,10,8,.85), rgba(11,10,8,.25));
+  border-bottom: 1px solid rgba(245,240,230,.08);
+}
+
+.brand__title{font-size:16px; letter-spacing:.14em; text-transform:uppercase}
+.brand__sub{font-size:12px; color:var(--muted); margin-top:4px}
+
+.wrap{max-width:1050px; margin:24px auto 42px; padding:0 18px}
+
+.card{
+  background:
+    radial-gradient(1200px 500px at 20% 0%, rgba(216,192,138,.12), transparent 55%),
+    linear-gradient(180deg, rgba(42,36,27,.85), rgba(34,29,22,.86));
+  border:1px solid rgba(245,240,230,.10);
+  border-radius: var(--radius);
+  box-shadow: 0 18px 50px var(--shadow);
+  padding:22px;
+  position:relative;
+  overflow:hidden;
+}
+
+.card:before{
+  content:"";
+  position:absolute; inset:-2px;
+  background:
+    radial-gradient(900px 260px at 50% 0%, rgba(216,192,138,.10), transparent 55%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='.12'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+  pointer-events:none;
+}
+
+.h1{font-size:26px; margin:0 0 10px}
+.h2{font-size:20px; margin:0 0 8px}
+.p{margin:0 0 12px; line-height:1.75; color:var(--ink)}
+.subtle{color:var(--muted)}
+.note{margin-top:12px; color:rgba(245,240,230,.72); font-size:12px; line-height:1.7}
+.tiny{margin-top:12px; color:rgba(245,240,230,.55); font-size:12px; line-height:1.7}
+
+.btn{
+  border:1px solid rgba(245,240,230,.18);
+  background: rgba(245,240,230,.06);
+  color:var(--ink);
+  padding:10px 14px;
+  border-radius: 14px;
+  cursor:pointer;
+  transition: transform .08s ease, background .2s ease, border-color .2s ease;
+  font-weight:600;
+  letter-spacing:.02em;
+}
+.btn:hover{background: rgba(245,240,230,.09); border-color: rgba(245,240,230,.28)}
+.btn:active{transform: translateY(1px)}
+.btn:disabled{opacity:.5; cursor:not-allowed}
+.btn.primary{
+  background: linear-gradient(180deg, rgba(216,192,138,.22), rgba(216,192,138,.10));
+  border-color: rgba(216,192,138,.40);
+}
+.btn.ghost{
+  background: transparent;
+  border-color: rgba(245,240,230,.16);
+}
+
+.actions{display:flex; gap:10px; margin-top:14px; flex-wrap:wrap}
+
+.timerRow{display:flex; align-items:center; justify-content:space-between; gap:14px; margin-top:12px}
+.timer{display:flex; align-items:center; gap:10px; font-variant-numeric: tabular-nums; color:rgba(245,240,230,.86)}
+.timerDot{
+  width:10px; height:10px; border-radius:999px;
+  background: rgba(216,192,138,.25);
+  box-shadow: 0 0 0 0 rgba(216,192,138,.25);
+}
+.timerDot.on{
+  background: rgba(216,192,138,.85);
+  animation: pulse 1s infinite ease-in-out;
+}
+@keyframes pulse{
+  0%{box-shadow:0 0 0 0 rgba(216,192,138,.55)}
+  70%{box-shadow:0 0 0 10px rgba(216,192,138,0)}
+  100%{box-shadow:0 0 0 0 rgba(216,192,138,0)}
+}
+
+.meditationText{
+  margin-top:14px;
+  padding:14px;
+  border-radius:16px;
+  border:1px solid rgba(245,240,230,.12);
+  background: rgba(0,0,0,.22);
+  line-height:1.85;
+  white-space:pre-line;
+}
+
+.wheelHead{display:flex; flex-direction:column; gap:6px; margin-bottom:14px}
+.wheelStage{position:relative; padding:10px 0 0}
+.parchmentGlow{
+  position:absolute; inset:0;
+  background: radial-gradient(520px 520px at 50% 40%, rgba(216,192,138,.14), transparent 62%);
+  pointer-events:none;
+}
+
+.wheelWrap{
+  position:relative;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:24px 0 16px;
+}
+
+.pointer{
+  position:absolute;
+  top:8px;
+  width:0;height:0;
+  border-left:10px solid transparent;
+  border-right:10px solid transparent;
+  border-bottom:16px solid rgba(216,192,138,.75);
+  filter: drop-shadow(0 8px 12px rgba(0,0,0,.5));
+  z-index:5;
+}
+
+.wheel{
+  width:min(420px, 86vw);
+  aspect-ratio:1/1;
+  border:none;
+  background: transparent;
+  position:relative;
+  border-radius:999px;
+  cursor:pointer;
+  transform: rotate(0deg);
+  transition: transform 1.4s cubic-bezier(.12,.9,.12,1);
+  filter: drop-shadow(0 18px 24px rgba(0,0,0,.45));
+}
+.wheel__ring{
+  position:absolute; inset:0;
+  border-radius:999px;
+  background:
+    radial-gradient(closest-side, rgba(42,36,27,.0) 56%, rgba(216,192,138,.10) 60%, rgba(216,192,138,.08) 66%, rgba(42,36,27,.0) 70%),
+    radial-gradient(closest-side, rgba(34,29,22,.92), rgba(24,20,15,.92));
+  border: 1px solid rgba(245,240,230,.12);
+}
+.wheel__ring:before{
+  content:"";
+  position:absolute; inset:18px;
+  border-radius:999px;
+  border:1px dashed rgba(216,192,138,.25);
+  opacity:.8;
+}
+.wheel__ring:after{
+  content:"";
+  position:absolute; inset:40px;
+  border-radius:999px;
+  border:1px solid rgba(245,240,230,.08);
+}
+
+.wheel__center{
+  position:absolute;
+  inset:50%;
+  transform: translate(-50%, -50%);
+  width:42%;
+  aspect-ratio:1/1;
+  border-radius:999px;
+  background:
+    radial-gradient(closest-side, rgba(216,192,138,.10), rgba(0,0,0,.35));
+  border: 1px solid rgba(216,192,138,.25);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.wheel__centerText{
+  font-size:13px;
+  color:rgba(245,240,230,.86);
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  text-align:center;
+  padding:0 12px;
+}
+
+.wheel__runes{
+  position:absolute; inset:0;
+  display:block;
+}
+
+.runeMark{
+  position:absolute;
+  left:50%; top:50%;
+  transform-origin: 0 0;
+  color: rgba(245,240,230,.72);
+  text-shadow: 0 8px 14px rgba(0,0,0,.55);
+  font-size:18px;
+  letter-spacing:.02em;
+  opacity:.92;
+}
+.runeMark span{
+  display:inline-block;
+  transform: translate(-50%, -50%);
+  padding:6px 8px;
+  border-radius:14px;
+  background: rgba(0,0,0,.20);
+  border: 1px solid rgba(245,240,230,.08);
+}
+
+.resultHead{display:flex; align-items:flex-start; justify-content:space-between; gap:14px; flex-wrap:wrap}
+.resultMeta{display:flex; gap:8px; flex-wrap:wrap}
+.pill{
+  font-size:12px;
+  padding:6px 10px;
+  border-radius:999px;
+  border:1px solid rgba(245,240,230,.14);
+  background: rgba(0,0,0,.18);
+  color: rgba(245,240,230,.78);
+}
+
+.resultGrid{
+  display:grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap:14px;
+  margin-top:14px;
+}
+@media (max-width: 860px){
+  .resultGrid{grid-template-columns:1fr}
+}
+
+.resultCard{
+  border:1px solid rgba(245,240,230,.12);
+  border-radius:18px;
+  background: rgba(0,0,0,.20);
+  padding:14px;
+}
+.resultCard__label{
+  font-size:12px;
+  color: rgba(216,192,138,.9);
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+.runeRow{display:flex; align-items:baseline; justify-content:space-between; gap:12px; margin-top:10px}
+.runeGlyph{
+  font-size:46px;
+  line-height:1;
+  color: rgba(245,240,230,.92);
+}
+.runeName{
+  font-size:14px;
+  color: rgba(245,240,230,.78);
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  text-align:right;
+}
+
+.tabs{display:flex; gap:8px; margin-top:12px; flex-wrap:wrap}
+.tab{
+  border:1px solid rgba(245,240,230,.14);
+  background: rgba(245,240,230,.05);
+  color: rgba(245,240,230,.80);
+  padding:8px 10px;
+  border-radius: 999px;
+  cursor:pointer;
+  font-weight:700;
+  font-size:12px;
+}
+.tab.active{
+  border-color: rgba(216,192,138,.40);
+  background: rgba(216,192,138,.12);
+}
+.tabPanel{
+  margin-top:10px;
+  padding:12px;
+  border-radius:14px;
+  border:1px solid rgba(245,240,230,.10);
+  background: rgba(0,0,0,.18);
+  line-height:1.85;
+  white-space:pre-line;
+  min-height: 120px;
+}
+
+.footer{padding:22px; text-align:center; color: rgba(245,240,230,.55)}
