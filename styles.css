@@ -306,3 +306,10 @@ body{
 }
 
 .footer{padding:22px; text-align:center; color: rgba(245,240,230,.55)}
+/* ===== Christmas Snow Overlay ===== */
+#snow-canvas {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+}
