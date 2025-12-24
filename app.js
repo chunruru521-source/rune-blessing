@@ -810,3 +810,73 @@ function init(){
 }
 
 init();
+// ===== Christmas Snow (Only on 2025-12-25, local time) =====
+(function christmasSnow() {
+  const now = new Date();
+  const isChristmas2025 =
+    now.getFullYear() === 2025 &&
+    now.getMonth() === 11 && // 0=Jan ... 11=Dec
+    now.getDate() === 25;
+
+  if (!isChristmas2025) return;
+
+  // Create canvas overlay
+  const canvas = document.createElement("canvas");
+  canvas.id = "snow-canvas";
+  document.body.appendChild(canvas);
+
+  const ctx = canvas.getContext("2d");
+  let w, h, dpr;
+
+  function resize() {
+    dpr = window.devicePixelRatio || 1;
+    w = window.innerWidth;
+    h = window.innerHeight;
+    canvas.width = Math.floor(w * dpr);
+    canvas.height = Math.floor(h * dpr);
+    canvas.style.width = w + "px";
+    canvas.style.height = h + "px";
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  window.addEventListener("resize", resize);
+  resize();
+
+  // Snow particles
+  const count = Math.min(180, Math.floor((w * h) / 12000) + 60);
+  const flakes = Array.from({ length: count }).map(() => ({
+    x: Math.random() * w,
+    y: Math.random() * h,
+    r: 1 + Math.random() * 2.5,
+    vx: -0.6 + Math.random() * 1.2,
+    vy: 0.7 + Math.random() * 1.8,
+    wobble: Math.random() * Math.PI * 2,
+    wobbleSpeed: 0.008 + Math.random() * 0.02
+  }));
+
+  function step() {
+    ctx.clearRect(0, 0, w, h);
+    ctx.globalAlpha = 0.9;
+
+    for (const f of flakes) {
+      f.wobble += f.wobbleSpeed;
+      f.x += f.vx + Math.sin(f.wobble) * 0.35;
+      f.y += f.vy;
+
+      if (f.y > h + 10) {
+        f.y = -10;
+        f.x = Math.random() * w;
+      }
+      if (f.x < -10) f.x = w + 10;
+      if (f.x > w + 10) f.x = -10;
+
+      ctx.beginPath();
+      ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2);
+      ctx.fillStyle = "rgba(255,255,255,0.95)";
+      ctx.fill();
+    }
+
+    requestAnimationFrame(step);
+  }
+
+  step();
+})();
